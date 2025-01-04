@@ -1,6 +1,12 @@
 
-#maincontainer {
-    color: #9d9b9b;
-    width: 200px;
-    height: 200px;
+*{
+    margin: 0;
+    padding: 0;
+    font-family: poppins, sans-serif;
+
+}.game{
+    width: 70 vw;
+    height: 70 vh;
+    align-items: center;
+
 }
