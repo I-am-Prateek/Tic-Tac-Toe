@@ -1,8 +1,8 @@
 let gamebox= document.querySelectorAll(".btn");
-let restart= document.querySelectorAll(".restart");
-let newgame= document.querySelectorAll("#new-game")
-let msgBox= document.querySelectorAll(".msg-box")
-let msg= document.querySelectorAll("#msg")
+let reset= document.querySelector(".reset");
+let newgame= document.querySelector("#new-game")
+let msgBox= document.querySelector(".msg-box")
+let msg= document.querySelector(".msg")
 let turnX= true; //track the turn of the player
 
 const winningpattern=[
@@ -15,9 +15,14 @@ const winningpattern=[
 [0,4,8],
 [2,4,6]];
 
+const resetGame=()=>{
+    turnX=true;
+    enableBoxes();
+    msgBox.classList.add("hide");
+  };
+
 gamebox.forEach((btn) => {
     btn.addEventListener("click", ()=>{
-        console.log("Clicked")
         if(turnX){
             btn.innerHTML="X";
             turnX=false;
@@ -30,21 +35,44 @@ gamebox.forEach((btn) => {
     });
 });
 
-const showwinner = (winner) => {
+const disableBoxes=()=>{
+    for(let btn of gamebox){
+        btn.disabled=true;
+    }
+};
+
+const enableBoxes=()=>{
+    for(let btn of gamebox){
+        btn.disabled=false;
+        btn.innerHTML="";
+    }
+};
+
+const showwinner = (winner) => {            //TO show the winner of the game
     msg.innerText =`Congratulations, Winner is ${winner}`;
     msgBox.classList.remove("hide");
+    disableBoxes();
 };
+
+// const drawChecker =()=>{
+//     msg.innerText=`Game Draw, Play Again`;
+//     msgBox.classList.remove("hide");
+//     disableBoxes();
+// };
+
 const mywinner=()=> {
     for( let pattern of winningpattern){
         let firstposval= gamebox[pattern[0]].innerHTML;
         let secondposval= gamebox[pattern[1]].innerHTML;
         let thirdposval= gamebox[pattern[2]].innerHTML;
 
-        if(firstposval!="" && secondposval!="" && thirdposval!=""){
+        if(firstposval !="" && secondposval !="" && thirdposval !=""){
             if(firstposval===secondposval && secondposval===thirdposval){
-               console.log("winner", firstposval);
-               showwinner(firstposval);
-            }
+                showwinner(firstposval);
+            }     
         }
-    } 
+    }
 };
+
+newgame.addEventListener("click", resetGame);
+reset.addEventListener("click", resetGame);

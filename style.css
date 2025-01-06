@@ -33,17 +33,17 @@
     border-radius: 1.1rem;
     border: none;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-    font-size: 2.2rem;
+    font-size: 3rem;
     color: #AB4459;
     cursor: pointer;
     background: #f5f3f3;
 }
 
-.restart{
-    padding: 10px;
+.reset{
+    padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background: #074799;
+    background: #02142c;
     border-radius: 1em;
     cursor: pointer;
 }
@@ -62,12 +62,13 @@
 }
 
 #new-game{
-    padding: 10px;
+    padding: 10px 15px;
     font-size: 16px;
     color: #fff;
-    background: #074799;
+    background: #02142c;
     border-radius: 1em;
     cursor: pointer;
+    font-size: 20px;
 }
 .hide{
     display: none;
